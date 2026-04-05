@@ -2,7 +2,7 @@ import telebot
 from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 TOKEN = "8739170453:AAEAiP7kdbAAIwYtRbFwMwtY3LVfdQ0Nhq0"
-ADMIN = "@Brofa852"
+ADMIN = "@mmiiiiiiiiiiiii5"
 bot = telebot.TeleBot(TOKEN)
 
 def cours(youtube=None, drive=None):
@@ -51,7 +51,11 @@ UEI03_links = {
 
 UEI05_links = {
     "Anatomie": {
-        "_module": module_links(audio="https://t.me/+AzpSeklQa3k1MTZk", video_prof="https://t.me/+1otd224wtI80M2M8", resume=None),
+        "_module": module_links(
+            audio="https://t.me/c/3406140960/3/9",
+            video_prof="https://t.me/c/3406140960/3/9",
+            resume=None
+        ),
         "ostéologie du crane": cours(youtube="https://youtu.be/PeUNKwD59E0?si=76QTGqHoYySmzyXx", drive="https://drive.google.com/file/d/1OJyu1uOr-LXx7C6oFFDxEeDHahPLLWZP/view?usp=drive_open"),
         "ostéologie de la face 2": cours(youtube="https://youtu.be/Jpg38T16g0Q?si=y2-xqkOT7e3yTKuP", drive="https://drive.google.com/open?id=1P5KZg_94xURCcmFHWQ0j0TvqX5fDrSil&authuser=0"),
         "ARTICULATION TEMPORO-MANDIBULAIRE (ATM)": cours(youtube="https://youtu.be/P44_lXHRMjU?si=f9vnc3sDtHgK4Lbf", drive="https://drive.google.com/file/d/1jmBKrOTnVPcMpoiL9i1ett2dr3pDYjoO/view"),
@@ -73,7 +77,11 @@ UEI05_links = {
         "Audition": cours(youtube="https://youtu.be/r-cIEvhDaIU?si=sfWWZE2Iiw639rWK", drive="https://drive.google.com/file/d/15MwJnNNvrNOHRc-24ih4lYXBLUB0QsAg/view"),
     },
     "Histologie": {
-        "_module": module_links(audio="https://t.me/+jvguo0PAxxc0M2I0", video_prof="https://t.me/+_cQMtbzAwRRhYzk0", resume=None),
+        "_module": module_links(
+            audio="https://t.me/c/3406140960/14",
+            video_prof="https://t.me/c/3406140960/14",
+            resume=None
+        ),
         "Développement embryologique": cours(youtube="https://youtu.be/ULJNMSrmNLI?si=Wn9kNdOZi2nDwb5B", drive="https://drive.google.com/open?id=18D5tb5YWtsoWciDS037LpmURqIf0BuYk&authuser=0"),
         "Cortex cérébral (Dr. Daksi)": cours(youtube="https://youtu.be/oC_qcfZBcLQ?si=zUS2tiHD6G2tTsCO", drive="https://drive.google.com/file/d/1Ofwr7qVj2xBPR7pUAkk8W4SEzZP4Tvm_/view"),
         "HISTOLOGIE DU CORTEX CÉRÉBRAL": cours(youtube="https://youtu.be/Sp09jHLp6iI?si=CB7shMPRZ8Hz-pxm", drive="https://drive.google.com/file/d/1hgLuosSO13SK84HR1LGrrUpdZiQ35wYd/view"),
@@ -90,7 +98,11 @@ UEI05_links = {
         "Les terminaisons nerveuses de la peau": cours(youtube="https://youtu.be/nAPzixeludI?si=-SaI7fuLYAYUJcfB", drive="https://drive.google.com/file/d/12VKFRTIKEEEPnYaglGxeNVzF4pBUhsVp/view"),
     },
     "Physiologie": {
-        "_module": module_links(audio="https://t.me/+Ds45rnXkPLM1MDdk", video_prof="https://t.me/+FR2KCqQ6cwA4MTBk", resume=None),
+        "_module": module_links(
+            audio="https://t.me/c/3406140960/30",
+            video_prof="https://t.me/c/3406140960/30",
+            resume=None
+        ),
         "Récepteurs sensoriels": cours(youtube="https://youtu.be/wCjUdBDJGG4?si=mGriPyv-Axw5u6e1", drive="https://drive.google.com/file/d/1qCL6FxmUtvsGfvyd83bJaC-yv61kfHup/view"),
         "Racines rachidiennes": cours(youtube="https://youtu.be/fw9DaKNuQl8?si=HGnHRFRKbq-CJOAk", drive="https://drive.google.com/file/d/1ArFIe3gC3t7iZbCcHtGeZAusb2z9aL5U/view"),
         "ME Conduction": cours(youtube="https://youtu.be/yb4ckpRP5JA?si=ZV_sRHcTEg90oCTi", drive="https://drive.google.com/file/d/1hHMHZ4VAsWzE1pe7hzgwwCF12FAHIq02/view"),
@@ -111,7 +123,9 @@ UEI05_links = {
 UNITS_LINKS  = {"UEI03": UEI03_links, "UEI05": UEI05_links}
 ACTIVE_UNITS = {"UEI03", "UEI05"}
 
-def main_menu(chat_id, message_id=None):
+LOGO_PATH = "Lumed_s_logo.png"
+
+def build_keyboard():
     keyboard = InlineKeyboardMarkup()
     keyboard.add(InlineKeyboardButton("🌐 Drive Médecine Sétif 2024-2025", url="https://drive.google.com/drive/folders/1E1Tky9BJsYKngBVTQM11V3zd834v_DVM"))
     for i in range(1, 6):
@@ -122,51 +136,29 @@ def main_menu(chat_id, message_id=None):
             keyboard.add(InlineKeyboardButton(f"📚 {unit} (قريباً)", callback_data="placeholder"))
     keyboard.add(InlineKeyboardButton("🌐 مواقع مفيدة", url="https://example.com/your_sources"))
     keyboard.add(InlineKeyboardButton(f"📩 Contact Admin: {ADMIN}", url=f"https://t.me/{ADMIN[1:]}"))
+    return keyboard
+
+def main_menu(chat_id, message_id=None):
+    keyboard = build_keyboard()
     text = "📌 القائمة الرئيسية:"
     if message_id:
         bot.edit_message_text(text, chat_id, message_id, reply_markup=keyboard)
     else:
         bot.send_message(chat_id, text, reply_markup=keyboard)
 
-def subject_menu(chat_id, message_id, unit):
-    links = UNITS_LINKS.get(unit, {})
-    keyboard = InlineKeyboardMarkup()
-    for subject in links:
-        keyboard.add(InlineKeyboardButton(subject, callback_data=f"subj|{unit}|{subject}"))
-    keyboard.add(InlineKeyboardButton("⬅️ Retour", callback_data="back_main"))
-    bot.edit_message_text(f"📘 الوحدة: {unit}\nاختر المادة:", chat_id, message_id, reply_markup=keyboard)
-
-def lessons_menu(chat_id, message_id, unit, subject):
-    subject_data = UNITS_LINKS.get(unit, {}).get(subject, {})
-    keyboard = InlineKeyboardMarkup()
-    for lesson, urls in subject_data.items():
-        if lesson == "_module":
-            continue
-        yt  = urls.get("youtube")
-        drv = urls.get("drive")
-        keyboard.add(InlineKeyboardButton(f"📖 {lesson}", callback_data="noop"))
-        row = []
-        if yt:  row.append(InlineKeyboardButton("▶️ YouTube", url=yt))
-        if drv: row.append(InlineKeyboardButton("📁 Drive",   url=drv))
-        if row:
-            keyboard.add(*row)
-        else:
-            keyboard.add(InlineKeyboardButton("🔒 قريباً", callback_data="placeholder"))
-    mod = subject_data.get("_module", {})
-    audio=mod.get("audio"); video_prof=mod.get("video_prof"); resume=mod.get("resume")
-    if any([audio, video_prof, resume]):
-        keyboard.add(InlineKeyboardButton("─────────────────", callback_data="noop"))
-        row_m=[]
-        if audio:      row_m.append(InlineKeyboardButton("🎙️ Audio",      url=audio))
-        if video_prof: row_m.append(InlineKeyboardButton("🎬 Vidéo Prof", url=video_prof))
-        if resume:     row_m.append(InlineKeyboardButton("📄 Résumé",     url=resume))
-        if row_m: keyboard.add(*row_m)
-    keyboard.add(InlineKeyboardButton("⬅️ Retour", callback_data=f"back_subject|{unit}"))
-    bot.edit_message_text(f"📚 {unit} › {subject}\nاختر الدرس:", chat_id, message_id, reply_markup=keyboard)
-
 @bot.message_handler(commands=['start'])
 def start(message):
-    main_menu(message.chat.id)
+    keyboard = build_keyboard()
+    try:
+        with open(LOGO_PATH, "rb") as photo:
+            bot.send_photo(
+                message.chat.id,
+                photo,
+                caption="📌 القائمة الرئيسية:",
+                reply_markup=keyboard
+            )
+    except Exception:
+        bot.send_message(message.chat.id, "📌 القائمة الرئيسية:", reply_markup=keyboard)
 
 @bot.callback_query_handler(func=lambda call: True)
 def callback_handler(call):
