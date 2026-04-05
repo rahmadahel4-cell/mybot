@@ -1,8 +1,9 @@
+import os
 import telebot
 from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
 
-TOKEN = "8739170453:AAEAiP7kdbAAIwYtRbFwMwtY3LVfdQ0Nhq0"
-ADMIN = "@mmiiiiiiiiiiiii5"
+TOKEN = os.environ.get("BOT_TOKEN")
+ADMIN = "@Brofa852"
 bot = telebot.TeleBot(TOKEN)
 
 def cours(youtube=None, drive=None):
